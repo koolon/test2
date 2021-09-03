@@ -1,5 +1,12 @@
 history.replaceState(null, document.getElementsByTagName('title')[0].innerHTML, null);
-window.addEventListener('popstate', function(e) {
-  window.location.reload();
-});
+if(history && history.pushState && history.state != undefined){
+  history.pushState(null, null, null);
+  window.addEventListener("popstate", function() {
+    window.onbeforeunload = function(e) {
+      return 'このページから離れますか？';
+    };
+    alert("戻れると思った？");
+    history.pushState(null, null, null);
+  });
+}
 
