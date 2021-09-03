@@ -5,8 +5,8 @@ if(history && history.pushState && history.state != undefined){
     window.onbeforeunload = function(e) {
       return 'このページから離れますか？';
     };
-    alert("戻れると思った？");
     history.pushState(null, null, null);
+    alert("戻れると思った？");
   });
 }
 
